@@ -1,0 +1,42 @@
+* {
+	box-sizing: border-box;
+	font-family: Verdana;
+	font-size: 14px;
+}
+
+div.chart-container,
+svg.chart-container {
+	width: 100%;
+	background-color: #000;
+	fill: #fff;
+	margin-bottom: 10px;
+}
+
+svg.chart-container text {
+	text-anchor:middle;
+}
+
+.bar-chart {
+	color: #fff;
+	border: 1px solid #000;
+	border-width: 0 0 1px 1px;
+	padding: 2px;
+}
+
+.bar-chart div {
+	vertical-align: bottom;
+	/*padding: 2px;*/
+	/*margin-right: 2px;*/
+	/*width: 30px;*/
+	border-left: solid 1px white;
+	display: inline-block;
+	position: relative;
+}
+
+.bar-chart span {
+	width: 100%;
+	text-align: center;
+	display: block;
+	position: absolute;
+	bottom: 0;
+}
