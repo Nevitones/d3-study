@@ -91,7 +91,27 @@ barsChart3 = new BackChart.BarsChart({
 	gutter : 2
 });
 
-$('body').append(barsChartNagativeValues.render().el);
-$('body').append(barsChart1.render().el);
-$('body').append(barsChart2.render().el);
-$('body').append(barsChart3.render().el);
+// $('body').append(barsChartNagativeValues.render().el);
+// $('body').append(barsChart1.render().el);
+// $('body').append(barsChart2.render().el);
+// $('body').append(barsChart3.render().el);
+var d = [];
+for (i = 0; i <= 4; i = i + 1) {
+	d.push(Math.random()*100);
+}
+
+var pieChart = new BackChart.PieChart({
+	data : d,
+	width : 400,
+	height :600,
+	radius: 250,
+	offset: 10,
+	margin: {
+		top: 25,
+		right: 25,
+		bottom: 25,
+		left: 25
+	}
+});
+
+$('body').append(pieChart.render().el);
