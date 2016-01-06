@@ -1,0 +1,23 @@
+{
+  "name": "d3js",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Nevitones/d3-study.git"
+  },
+  "author": "Neviton Andre Araujo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nevitones/d3-study/issues"
+  },
+  "homepage": "https://github.com/Nevitones/d3-study",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-connect": "^2.3.1"
+  }
+}

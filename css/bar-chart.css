@@ -1,19 +1,23 @@
 * {
 	box-sizing: border-box;
-	font-family: Verdana;
-	font-size: 14px;
+	font-family: 'Roboto', sans-serif;
 }
 
-div.chart-container,
+.chart {
+	text-align: center;
+	color: #FFF;
+	background-color: #8bc34a;
+}
+
 svg.chart-container {
 	width: 100%;
-	background-color: #000;
-	fill: #fff;
 	margin-bottom: 10px;
 }
 
 svg.chart-container text {
 	text-anchor:middle;
+	color: #000;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
 
 .bar-chart {
@@ -23,20 +27,10 @@ svg.chart-container text {
 	padding: 2px;
 }
 
-.bar-chart div {
-	vertical-align: bottom;
-	/*padding: 2px;*/
-	/*margin-right: 2px;*/
-	/*width: 30px;*/
-	border-left: solid 1px white;
-	display: inline-block;
-	position: relative;
+.chart-green svg.chart-container {
+	/*background-color: #8bc34a;*/
 }
-
-.bar-chart span {
-	width: 100%;
-	text-align: center;
-	display: block;
-	position: absolute;
-	bottom: 0;
+.chart-green svg.chart-container g,
+.chart-green svg.chart-container path {
+	fill:  #dcedc8;
 }

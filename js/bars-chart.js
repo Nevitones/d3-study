@@ -7,11 +7,22 @@ var BackChart = BackChart || {};
 		initialize: function (options) {
 			BackChart.BaseChart.prototype.initialize.apply(this, arguments);
 
+			var minData = d3.min(this.data),
+				maxData = d3.max(this.data);
+
+			if (minData > 0) {
+				minData = 0;
+			}
+
+			this.dataAslabel = options.dataAslabel;
+
+			this.labels = options.labels;
+
 			this.labelPlacement = options.labelPlacement;
 
 			this.gutter = options.gutter;
 
-			this.barWidth = (this.width - this.gutter) / this.data.length - this.gutter;
+			this.barWidth = (this.innerWidth - this.gutter) / this.data.length - this.gutter;
 
 			this.hueRange = {};
 
@@ -24,16 +35,16 @@ var BackChart = BackChart || {};
 			}
 
 			this.scaleHue = d3.scale.linear()
-				.domain([0, d3.max(this.data)])
+				.domain([0, maxData])
 				.range([this.hueRange.start, this.hueRange.end]);
 
 			this.scaleX = d3.scale.linear()
 				.domain([0, this.data.length])
-				.range([0, this.width - this.gutter]);
+				.range([0, this.innerWidth - this.gutter]);
 
 			this.scaleY = d3.scale.linear()
-				.domain([d3.min(this.data), d3.max(this.data)])
-				.range([0, this.height]);
+				.domain([minData, maxData])
+				.range([0, this.innerHeight]);
 		},
 
 		getChartStyle: function () {
@@ -41,19 +52,19 @@ var BackChart = BackChart || {};
 			return {
 				width: this.barWidth + 'px',
 				height: function(data) {
-					var y;
+					var h;
 
 					if (data >= 0) {
-						y = self.scaleY(data) - self.scaleY(0);
+						h = self.scaleY(data) - self.scaleY(0);
 					} else {
-						y = self.scaleY(0) - self.scaleY(data);
+						h = self.scaleY(0) - self.scaleY(data);
 					}
 
-					return y + 'px';
-				},
-				fill: function(data, index) {
-					return 'hsl(' + self.scaleHue(data) + ',100%,50%)';
+					return h + 'px';
 				}
+				// fill: function(data, index) {
+				// 	return 'hsl(' + self.scaleHue(data) + ',100%,50%)';
+				// }
 			};
 		},
 		getChartGroupAttr: function () {
@@ -63,19 +74,19 @@ var BackChart = BackChart || {};
 				transform: function(data, index) {
 					var y;
 					if (data >= 0) {
-						y = self.height - self.scaleY(data) + self.margin.top;
+						y = self.innerHeight - self.scaleY(data) + self.margin.top;
 					} else {
-						y = self.height - self.scaleY(0) + self.margin.top;
+						y = self.innerHeight - self.scaleY(0) + self.margin.top;
 					}
-
 					return 'translate(' + (self.scaleX(index) + self.gutter + self.margin.left) + ', ' + y + ')';
 				}
 			};
 		},
 
 		getLabelText: function () {
-			return function (data) {
-				return Math.round(data);
+			var self = this;
+			return function (data, index) {
+				return self.dataAslabel ? data : self.labels[index];
 			};
 		},
 
@@ -112,17 +123,17 @@ var BackChart = BackChart || {};
 		appendBeforeChart: function() {
 			var self = this;
 
-			this.svg.append('line')
-				.attr({
-					x1: 0,
-					y1: self.height - self.scaleY(0) + self.margin.top,
-					x2: self.width,
-					y2: self.height - self.scaleY(0) + self.margin.top
-				})
-				.style({
-					'stroke-width': 1,
-					stroke: '#ffffff'
-				});
+			// this.svg.append('line')
+			// 	.attr({
+			// 		x1: 0,
+			// 		y1: self.height - self.scaleY(0) + self.margin.top,
+			// 		x2: self.width,
+			// 		y2: self.height - self.scaleY(0) + self.margin.top
+			// 	})
+			// 	.style({
+			// 		'stroke-width': 1,
+			// 		stroke: '#ffffff'
+			// 	});
 		}
 	});
 

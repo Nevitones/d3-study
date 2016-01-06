@@ -6,20 +6,33 @@ var BackChart = BackChart || {};
 
 		initialize: function (options) {
 			BackChart.BaseChart.prototype.initialize.apply(this, arguments);
+			
+			this.labels = options.labels;
 
-			this.format = d3.format('.4r');
+			// this.format = d3.format('.4r');
+			this.format = d3.format('d');
 			
 			this.offset = options.offset;
 
-			if (this.width < this.height) {
-				this.radius = this.width / 2 - this.offset * 2;
+			this.textOffset = options.textOffset;
+
+			if (this.innerWidth < this.innerHeight) {
+				this.radius = this.innerWidth / 2 - this.offset;
 			} else {
-				this.radius = this.height / 2 - this.offset * 2;
+				this.radius = this.innerHeight / 2 - this.offset;
 			}
 
-			this.scaleHue = d3.scale.linear()
-				.domain([0, d3.sum(this.data)])
-				.range([0, 100]);
+			if (options.hueRange) {
+				this.hueRange = {
+					start : d3.rgb(options.hueRange.start).hsl().h,
+					end : d3.rgb(options.hueRange.end).hsl().h
+				};
+
+				this.scaleHue = d3.scale.linear()
+					.domain([0, d3.sum(this.data)])
+					.range([this.hueRange.start, this.hueRange.end]);
+			}
+
 
 			this.scaleRad = d3.scale.linear()
 				.domain([0, d3.sum(this.data)])
@@ -27,18 +40,23 @@ var BackChart = BackChart || {};
 		},
 
 		getChartStyle: function () {
-			var self = this;
-			return {
-				fill: function (data, index) {
+			var self = this,
+				style = {};
+
+			if (self.hueRange) {
+				style.fill = function (data, index) {
 					return 'hsl(' + (index * 10 + 180) + ', 100%, 50%)';
 					// return 'hsl(' + self.scaleHue(data) + ', 100%, 50%)';
-				},
-				stroke: function (data, index) {
+				};
+				style.stroke = function (data, index) {
 					return 'hsl(' + (index * 10 + 180) + ', 100%, 50%)';
 					// return 'hsl(' + self.scaleHue(data) + ', 100%, 50%)';
-				},
-				'stroke-width': 1
-			};
+				};
+			}
+
+			style['stroke-width'] = 1;
+
+			return style;
 		},
 		getChartAttr: function () {
 			var self = this;
@@ -80,8 +98,9 @@ var BackChart = BackChart || {};
 
 		getLabelText: function () {
 			var self = this;
-			return function (data) {
-				return self.format(data);
+			return function (data, index) {
+				// return self.format(data);
+				return self.labels[index];
 			};
 		},
 
@@ -93,7 +112,7 @@ var BackChart = BackChart || {};
 				x: function (data, index) {
 					var endRad = startRadX + self.scaleRad(data);
 					
-					xText = Math.cos(startRadX + self.scaleRad(data) / 2) * (self.radius * 0.75);
+					xText = Math.cos(startRadX + self.scaleRad(data) / 2) * (self.radius * self.textOffset);
 
 					startRadX = endRad;
 					return xText;
@@ -101,7 +120,7 @@ var BackChart = BackChart || {};
 				y: function (data, index) {
 					var endRad = startRadY + self.scaleRad(data);
 
-					yText = Math.sin(startRadY + self.scaleRad(data) / 2) * (self.radius * 0.75);
+					yText = Math.sin(startRadY + self.scaleRad(data) / 2) * (self.radius * self.textOffset);
 
 					startRadY = endRad;
 					return yText;
@@ -109,12 +128,94 @@ var BackChart = BackChart || {};
 			};
 		},
 
+		appendAfterChart: function () {
+			// this.svg.append('g')
+			// 	.append('rect')
+			// 	.attr({
+			// 		width: this.margin.left,
+			// 		height: this.margin.top + this.height + this.margin.bottom
+			// 	})
+			// 	.style({
+			// 		opacity: '0.5'
+			// 	});
+
+			// this.svg.append('g')
+			// 	.append('rect')
+			// 	.attr({
+			// 		width: this.margin.left + this.width + this.margin.right,
+			// 		height: this.margin.top
+			// 	})
+			// 	.style({
+			// 		opacity: '0.5'
+			// 	});
+
+			// this.svg.append('g')
+			// 	.attr({
+			// 		transform: 'translate(' + (this.width + this.margin.left) + ', ' + 0 + ')'
+			// 	})
+			// 	.append('rect')
+			// 	.attr({
+			// 		width: this.margin.right,
+			// 		height: this.margin.top + this.height + this.margin.bottom
+			// 	})
+			// 	.style({
+			// 		opacity: '0.5'
+			// 	});
+
+			// this.svg.append('g')
+			// 	.attr({
+			// 		transform: 'translate(' + 0 + ', ' + (this.height + this.margin.top) + ')'
+			// 	})
+			// 	.append('rect')
+			// 	.attr({
+			// 		width: this.margin.left + this.width + this.margin.right,
+			// 		height: this.margin.bottom
+			// 	})
+			// 	.style({
+			// 		opacity: '0.5'
+			// 	});
+
+			// this.svg.append('circle')
+			// 	.attr({
+			// 		cx: this.margin.left + this.radius + this.offset,
+			// 		cy: this.margin.top + this.radius + this.offset,
+			// 		r: 2
+			// 	})
+			// 	.style({
+			// 		fill: 'red'
+			// 	});
+
+		},
+
+		createChartGroup: function() {
+			this.chartGroup = this.svg.selectAll('g')
+				.data(this.data)
+				.enter()
+					.append('g')
+					.attr(this.getChartGroupAttr());
+
+			this.chartTextGroup = this.svg.selectAll('g.chart-label')
+				.data(this.data)
+				.enter()
+					.append('g')
+					.classed('chart-label', true)
+					.attr(this.getChartGroupAttr());
+		},
+
 		createChart: function() {
+			var self = this,
+				svgText;
+
+			this.chartGroup.append('title')
+				.text(function(data){
+					return data;
+				});
+
 			this.chartGroup.append('path')
 				.style(this.getChartStyle())
 				.attr(this.getChartAttr());
 
-			this.chartGroup.append('text')
+			this.chartTextGroup.append('text')
 				.text(this.getLabelText())
 				.attr(this.getLabelAttr());
 		}
