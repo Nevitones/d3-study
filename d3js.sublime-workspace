@@ -4,12 +4,40 @@
 		"selected_items":
 		[
 			[
-				"class",
-				"className"
+				"wrap",
+				"wrapChart"
+			],
+			[
+				"fun",
+				"fun	Function"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"tran",
+				"translate"
+			],
+			[
+				"end",
+				"endRad"
 			],
 			[
 				"get",
-				"getSong〔function〕"
+				"getChartAttr"
+			],
+			[
+				"scale",
+				"scaleY"
+			],
+			[
+				"ch",
+				"chartData"
+			],
+			[
+				"class",
+				"className"
 			],
 			[
 				"ge",
@@ -156,10 +184,6 @@
 				"PATH_FB_UPLOAD"
 			],
 			[
-				"fun",
-				"fun	Function"
-			],
-			[
 				"func",
 				"function"
 			],
@@ -176,18 +200,27 @@
 	"buffers":
 	[
 		{
-			"file": "index.html",
+			"file": "folders-size.json",
 			"settings":
 			{
-				"buffer_size": 453,
-				"line_ending": "Unix"
+				"buffer_size": 893,
+				"line_ending": "Windows",
+				"name": "83M     $RECYCLE.BIN"
 			}
 		},
 		{
-			"file": "js/bars-chart.js",
+			"file": "js/examples.js",
 			"settings":
 			{
-				"buffer_size": 1967,
+				"buffer_size": 8153,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "json/kpi.json",
+			"settings":
+			{
+				"buffer_size": 2001,
 				"line_ending": "Windows"
 			}
 		},
@@ -195,7 +228,31 @@
 			"file": "css/bar-chart.css",
 			"settings":
 			{
-				"buffer_size": 577,
+				"buffer_size": 576,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/bars-chart.js",
+			"settings":
+			{
+				"buffer_size": 3255,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/pie-chart.js",
+			"settings":
+			{
+				"buffer_size": 5479,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/base-chart.js",
+			"settings":
+			{
+				"buffer_size": 1859,
 				"line_ending": "Windows"
 			}
 		}
@@ -207,17 +264,85 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 147.0,
-		"last_filter": "browser",
+		"height": 342.0,
+		"last_filter": "fet",
 		"selected_items":
 		[
 			[
-				"browser",
-				"File: Open In Browser - Production Server"
+				"fet",
+				"Fetch: Package"
+			],
+			[
+				"new",
+				"File: New File Relative to Current View"
 			],
 			[
 				"rename",
 				"File: Rename"
+			],
+			[
+				"key",
+				"Preferences: Key Bindings - Default"
+			],
+			[
+				"conflic",
+				"FindKeyConflicts: All Conflicts"
+			],
+			[
+				"new ",
+				"File: New File Relative to Current View"
+			],
+			[
+				"move",
+				"File: Move"
+			],
+			[
+				"align",
+				"Preferences: Alignment File Settings – Syntax Specific – User"
+			],
+			[
+				"keycon",
+				"FindKeyConflicts: All Conflicts"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"text",
+				"Text Pastry: Range"
+			],
+			[
+				"htmlb",
+				"HTMLBeautify"
+			],
+			[
+				"html",
+				"Set Syntax: HTML"
+			],
+			[
+				"fetch",
+				"Fetch: File"
+			],
+			[
+				"new file",
+				"File: New File Relative to Current View"
+			],
+			[
+				"man",
+				"Fetch: Manage"
+			],
+			[
+				"newfile",
+				"File: New File Relative to Current View"
+			],
+			[
+				"feth",
+				"Fetch: File"
+			],
+			[
+				"browser",
+				"File: Open In Browser - Production Server"
 			],
 			[
 				"projet",
@@ -236,10 +361,6 @@
 				"Javascript Beautify"
 			],
 			[
-				"install",
-				"Package Control: Install Package"
-			],
-			[
 				"i",
 				"Indentation: Reindent Lines"
 			],
@@ -252,16 +373,8 @@
 				"Preferences: Settings - Default"
 			],
 			[
-				"html",
-				"HTMLBeautify"
-			],
-			[
 				"sett",
 				"Preferences: Settings - Default"
-			],
-			[
-				"key",
-				"Preferences: Key Bindings - User"
 			],
 			[
 				"list",
@@ -407,6 +520,8 @@
 		"height": 452.0,
 		"history":
 		[
+			"sublime.log_commands(False)",
+			"sublime.log_commands(True)",
 			"sublime.log_input(False);",
 			"sublime.log_input(True);",
 			"sublime.log_input(true);",
@@ -429,10 +544,30 @@
 	"expanded_folders":
 	[
 		"/C/WORK/d3js",
+		"/C/WORK/d3js/css",
 		"/C/WORK/d3js/js"
 	],
 	"file_history":
 	[
+		"/c/WORK/d3js/.gitignore",
+		"/C/WORK/d3js/package.json",
+		"/C/WORK/d3js/js/npm.js",
+		"/C/WORK/d3js/css/bar-chart.css",
+		"/C/WORK/d3js/index.html",
+		"/C/WORK/d3js/gulpfile.js",
+		"/C/home/Nevitones/.bashrc",
+		"/C/Users/Nevitones/AppData/Roaming/Sublime Text 3/Packages/User/Base File.sublime-settings",
+		"/C/WORK/d3js/js/base-chart.js",
+		"/C/Users/Nevitones/AppData/Roaming/Sublime Text 3/Packages/Alignment/Base File.sublime-settings",
+		"/C/Users/Nevitones/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
+		"/C/Users/Nevitones/AppData/Roaming/Sublime Text 3/Packages/Alignment/Default (Windows).sublime-keymap",
+		"/C/Users/Nevitones/AppData/Roaming/Sublime Text 3/Packages/Default/Default (Windows).sublime-keymap",
+		"/C/Users/Nevitones/AppData/Roaming/Sublime Text 3/Packages/User/JavaScript.sublime-settings",
+		"/C/Users/Nevitones/AppData/Roaming/Sublime Text 3/Packages/Terminal/Base File.sublime-settings",
+		"/C/Users/Nevitones/AppData/Roaming/Sublime Text 3/Packages/User/Fetch.sublime-settings",
+		"/C/WORK/d3js/js/lodash-min.js",
+		"/C/WORK/d3js/js/jquery-min.js",
+		"/C/WORK/d3js/js/backbone-min.js",
 		"/C/WORK/d3js/d3js",
 		"/C/WORK/meteor/chords/chords.html",
 		"/C/WORK/meteor/chords/chords.css",
@@ -440,7 +575,6 @@
 		"/C/Users/Nevitones/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
 		"/C/Users/Nevitones/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
 		"/C/Users/Nevitones/AppData/Roaming/Sublime Text 3/Packages/User/SublimeLinter/Monokai (SL).tmTheme",
-		"/C/Users/Nevitones/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
 		"/C/Users/Nevitones/AppData/Roaming/Sublime Text 3/Packages/BracketHighlighter/Example.sublime-keymap",
 		"/C/CygWin/home/Nevitones/.bashrc",
 		"/C/WORK/meteor/chords/chords.sublime-project",
@@ -448,7 +582,6 @@
 		"/C/WORK/meteor/chords/chords.sublime-project",
 		"/C/WORK/meteor/chords/chords",
 		"/C/WORK/cit/plugin-jira/index.html",
-		"/C/Users/Nevitones/AppData/Roaming/Sublime Text 3/Packages/Default/Default (Windows).sublime-keymap",
 		"/C/WORK/jasmine/calculator.html",
 		"/C/WORK/jasmine/src/calculator.js",
 		"/C/WORK/jasmine/spec/calculatorSpec.js",
@@ -543,24 +676,7 @@
 		"/C/Program Files/Popcorn Time/lib.lib",
 		"/C/Program Files/Popcorn Time/guiclient.map",
 		"/C/Program Files/Popcorn Time/guiclient.drc",
-		"/C/Program Files/Popcorn Time/cef.pak",
-		"/C/Users/Nevitones/Downloads/download3.png",
-		"/C/WORK/cit/Del Valle - Charter/mural_do_orgulho_brazil/java/delvalle-wallpride-parent/delvalle-wallpride-web/content/web_resources/pt/general/js/4.MODULES.Participation_InstagramPhotoPicker.js",
-		"/C/WORK/cit/Del Valle - Charter/mural_do_orgulho_brazil/java/delvalle-wallpride-parent/delvalle-wallpride-web/content/web_resources/pt/general/js/4.MODULES.Participation_FBPhotoPicker.js",
-		"/C/WORK/cit/Del Valle - Charter/mural_do_orgulho_brazil/java/delvalle-wallpride-parent/delvalle-wallpride-web/content/web_resources/pt/general/css/media-view-participation-instagramphotopicker.css",
-		"/C/WORK/cit/Del Valle - Charter/mural_do_orgulho_brazil/java/delvalle-wallpride-parent/delvalle-wallpride-web/content/web_resources/pt/general/css/2.view-participation-instagramphotopicker.css",
-		"/C/WORK/cit/Del Valle - Charter/mural_do_orgulho_brazil/java/delvalle-wallpride-parent/delvalle-wallpride-web/content/web_resources/pt/framework/js/4.MODULES_Instagram.js",
-		"/C/WORK/cit/Del Valle - Charter/mural_do_orgulho_brazil/java/delvalle-wallpride-parent/delvalle-wallpride-web/content/htdocs/pt/cbInstagram.html",
-		"/C/WORK/cit/Del Valle - Charter/mural_do_orgulho_brazil/java/delvalle-wallpride-parent/delvalle-wallpride-web/src/main/webapp/WEB-INF/jsp/index.jsp",
-		"/C/WORK/cit/Del Valle - Charter/mural_do_orgulho_brazil/java/delvalle-wallpride-parent/delvalle-wallpride-web/content/web_resources/pt/general/js/3.COMPONENT_Gallery.js",
-		"/C/WORK/cit/Del Valle - Charter/mural_do_orgulho_brazil/java/delvalle-wallpride-parent/delvalle-wallpride-web/content/web_resources/pt/framework/js/3.APP_getProperty.js",
-		"/C/WORK/cit/Del Valle - Charter/mural_do_orgulho_brazil/java/delvalle-wallpride-parent/delvalle-wallpride-web/content/web_resources/pt/general/js/4.MODULES.Home_Carousel.js",
-		"/C/WORK/cit/Del Valle - Charter/mural_do_orgulho_brazil/java/delvalle-wallpride-parent/delvalle-wallpride-web/content/web_resources/pt/general/js/4.MODULES.WallGallery.js",
-		"/C/WORK/cit/Del Valle - Charter/mural_do_orgulho_brazil/java/delvalle-wallpride-parent/delvalle-wallpride-web/src/main/webapp/WEB-INF/jsp/participation/participation.jsp",
-		"/C/WORK/cit/Del Valle - Charter/mural_do_orgulho_brazil/java/delvalle-wallpride-parent/delvalle-wallpride-web/content/web_resources/pt/general/js/4.TOOL_KoImageCrop.js",
-		"/C/WORK/cit/Del Valle - Charter/mural_do_orgulho_brazil/java/delvalle-wallpride-parent/delvalle-wallpride-web/content/web_resources/pt/general/js/MainApplication.js",
-		"/C/Users/Nevitones/AppData/Local/Temp/PopcornTime/This Is 40 UNRATED (2012)/This Is 40 Unrated 2012 BRRiP x264 AC3-OFFLiNE.srt",
-		"/C/Users/Nevitones/AppData/Local/Temp/PopcornTime/This Is 40 UNRATED (2012)/This.Is.40.UNRATED.2012.720p.BrRip.x264.BOKUTOX.YIFY.srt"
+		"/C/Program Files/Popcorn Time/cef.pak"
 	],
 	"find":
 	{
@@ -641,139 +757,139 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"console.log",
-			",",
-			";\n",
-			",",
-			"'",
-			",",
-			"\"",
-			"i",
-			"odd",
-			"even",
-			"if (",
-			"length",
-			"slip",
-			"removeClass",
-			"addClass",
-			"save",
-			"editMode",
-			"keypre",
-			"html",
-			"showForm",
-			" = ''",
-			"value",
-			"position",
-			"songContainer.children._id.value.length",
-			"empty",
-			"content",
-			"label",
-			"newSong",
-			"editmode",
-			"showForm",
-			"contentEditable",
-			"helper",
-			"new",
-			"editing",
-			"unless",
-			"styles",
-			"unless",
-			"clearForm",
-			"target",
-			"e.target.parentElement",
-			"songContainer",
-			"save",
-			"true",
-			"title",
-			"chords",
-			"class=\"mdl-data-table__cell--non-numeric\"",
-			"shift.*\\+a",
-			"+a",
-			"shift.*+a",
-			"tab",
-			"2",
-			"tab",
-			"<div>",
-			"+E]",
-			"+E",
-			"+E'",
-			"+E\"",
-			"+E",
-			"+e",
-			"+ e",
-			"t",
-			"4",
-			"5",
-			"xs",
-			"x",
-			"html",
-			"x",
-			"multiply",
-			"subtract",
-			"add",
-			"subtract",
-			"(2Tom)",
-			"(1Tom)",
-			"(1Int)",
-			"1Int",
-			"discountTypeCombo",
-			"create",
-			"under",
-			"numbe",
-			"enable_t",
-			"enable",
-			"tab",
-			"close",
-			",",
+			"3",
+			"el),",
+			"el",
+			";",
+			"$('.charts')",
+			"wrapChart",
+			"charts",
+			"className",
+			"col-xs-6 ",
+			"20",
+			"textOffset",
+			"0.75",
+			"=",
+			"getChartStyle",
 			"style",
-			"soda",
-			"alertTemplate",
-			"alertTamplete",
-			"alertTemplate",
-			"alertTamplete",
-			"getHeightValue",
-			"createConfirmModalRemoveAll",
-			"test",
-			"getGridName",
-			"gridname",
-			"new.*extend",
-			"updateDescription",
-			"getGridName",
-			"INCLUDE",
-			"h4",
-			"self.action",
-			"action",
-			"productType",
-			"this.confirmModal",
-			"DarpaCommonsJs.RemoveAllConfirmationModal = ",
-			"createConfirmModalRemoveAll",
-			"this.confirmModal",
-			"createConfirmModalRemoveAll",
-			"clear:",
-			".clear",
-			"createConfirmModalRemoveAll",
-			"confirmModal",
-			"getGridName(action),",
-			"createConfirmModalRemoveAll",
-			"createConfirmModalAllSite",
-			"createConfir",
-			"createC",
-			"confirmmodal",
-			"openAllSiteModal",
-			"confirmModal",
-			"createConfirmModalAllSite",
-			"confirm",
-			"build",
-			".js",
-			"openAllSiteModal",
-			"allS",
-			"allSiteModal",
-			"createConfirmModalAllSite"
+			"attr",
+			"true",
+			"labels",
+			"chart-green",
+			"chart",
+			":",
+			"tempArray",
+			"_.find",
+			"height",
+			"totalFreightCampaignsByMonth",
+			"totalDealsByType",
+			"totalDealsByMonth",
+			"totalInstallmentsByMonth",
+			"months",
+			"totalInstallmentsByMonthBarsChart",
+			"offset: 5,",
+			"-",
+			"render",
+			" + self.margin.top",
+			"index",
+			"width",
+			"y",
+			"getChartStyle",
+			"var",
+			"label",
+			"className: 'col-xs-6 chart',",
+			"totalFreightCampaignsByMonth",
+			"totalDealsByType",
+			"totalDealsByMonth",
+			"parseKpiData",
+			"tempArray",
+			"col-xs-6",
+			"className: 'col-xs-6',",
+			"var",
+			"body",
+			"0.75",
+			"1.5",
+			"install",
+			"chartGroup",
+			"chartGroup\n",
+			"getChartGroupAttr",
+			"totalFreightCampaignsByMonthChart",
+			"totalFreightCampaignsByMonth",
+			"totalDealsByType",
+			"totalDealsByTypeChart",
+			"totalDealsByType",
+			"totalDealsByMonth",
+			"totalDealsByType",
+			"totalInstallmentsByMonth",
+			"totalDealsByType",
+			"var",
+			"totalInstallmentsByMonth",
+			"25",
+			"createTitle",
+			"data",
+			"totalInstallmentsByMonth",
+			"\"",
+			",",
+			"[",
+			"(",
+			"_.find(kpi, {name: 'totalDealsByType'})",
+			".value)",
+			".value",
+			"value",
+			"_.find(kpi, {name: 'totalInstallmentsByMonth'})",
+			"totalInstallmentsByMonth",
+			"format",
+			"getLabelAttr",
+			"getLabelText",
+			"getLabelAttr",
+			"'g'",
+			"label",
+			"offset",
+			"item",
+			"totalInstallmentsByMonth",
+			"line",
+			"hli",
+			"ver",
+			"horizol",
+			"hor",
+			"line",
+			"barsChartNagativeValues",
+			"+a",
+			"+A",
+			"+a",
+			"+ a",
+			"+a",
+			"getLabelAttr",
+			"text",
+			"middle",
+			"offset",
+			"self",
+			"translate",
+			"0",
+			"radius",
+			"0.5",
+			"min",
+			" + self.offset",
+			"console",
+			" / 2",
+			"appendAfterChart",
+			"self.offset",
+			"radius",
+			"self.radius",
+			"10",
+			"0",
+			"self.radius / 2",
+			"/ 2",
+			"/",
+			"startRad",
+			"function",
+			"data",
+			"console"
 		],
 		"highlight": true,
 		"in_selection": false,
 		"preserve_case": false,
-		"regex": true,
+		"regex": false,
 		"replace_history":
 		[
 			"/",
@@ -806,19 +922,114 @@
 			[
 				{
 					"buffer": 0,
-					"file": "index.html",
+					"file": "folders-size.json",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 453,
+						"buffer_size": 893,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								307,
-								307
+								448,
+								448
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"auto_complete": true,
+							"auto_name": "83M     $RECYCLE.BIN",
+							"bh_regions":
+							[
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content"
+							],
+							"origPos":
+							[
+								0.0,
+								0.0
+							],
+							"syncScroll": false,
+							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "js/examples.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8153,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3023,
+								3023
 							]
 						],
 						"settings":
@@ -837,100 +1048,6 @@
 								"bh_tag_open",
 								"bh_tag_close",
 								"bh_tag_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content"
-							],
-							"origPos":
-							[
-								0.0,
-								0.0
-							],
-							"syncScroll": false,
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "js/bars-chart.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1967,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1618,
-								1618
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"auto_complete": false,
-							"bh_regions":
-							[
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
 								"bh_c_define",
 								"bh_c_define_center",
 								"bh_c_define_open",
@@ -941,26 +1058,26 @@
 								"bh_angle_open",
 								"bh_angle_close",
 								"bh_angle_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
 								"bh_square",
 								"bh_square_center",
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
@@ -971,23 +1088,24 @@
 								"bh_regex_open",
 								"bh_regex_close",
 								"bh_regex_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content"
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
 							],
 							"open_with_edit": true,
 							"origPos":
 							[
 								0.0,
-								450.0
+								1927.0
 							],
 							"syncScroll": false,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 450.0,
+						"translation.y": 1927.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -995,66 +1113,37 @@
 				},
 				{
 					"buffer": 2,
-					"file": "css/bar-chart.css",
+					"file": "json/kpi.json",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 577,
+						"buffer_size": 2001,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								193,
-								193
+								860,
+								860
 							]
 						],
 						"settings":
 						{
 							"BracketHighlighterBusy": false,
+							"auto_complete": true,
 							"bh_regions":
 							[
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
 								"bh_angle_close",
 								"bh_angle_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
@@ -1065,26 +1154,437 @@
 								"bh_unmatched_open",
 								"bh_unmatched_close",
 								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content"
+							],
+							"origPos":
+							[
+								0.0,
+								90.0
+							],
+							"syncScroll": false,
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 90.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "css/bar-chart.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 576,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								479,
+								479
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
 								"bh_round_close",
-								"bh_round_content"
+								"bh_round_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content"
 							],
-							"open_with_edit": true,
 							"origPos":
 							[
 								0.0,
 								0.0
 							],
 							"syncScroll": false,
-							"syntax": "Packages/CSS/CSS.tmLanguage"
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "js/bars-chart.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3255,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2218,
+								2236
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"auto_complete": false,
+							"bh_regions":
+							[
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content"
+							],
+							"open_with_edit": true,
+							"origPos":
+							[
+								0.0,
+								1010.0
+							],
+							"syncScroll": false,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1010.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "js/pie-chart.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5479,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2812,
+								2812
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"auto_complete": false,
+							"bh_regions":
+							[
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content"
+							],
+							"open_with_edit": true,
+							"origPos":
+							[
+								0.0,
+								1400.0
+							],
+							"syncScroll": false,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1400.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "js/base-chart.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1859,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								613,
+								613
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"auto_complete": false,
+							"bh_regions":
+							[
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content"
+							],
+							"origPos":
+							[
+								0.0,
+								225.0
+							],
+							"syncScroll": false,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 225.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
 					"type": "text"
 				}
 			]
@@ -1146,6 +1646,10 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"css",
+				"css\\bar-chart.css"
+			],
 			[
 				"prvjs",
 				"static\\src\\js\\promotion-wizard\\containers\\promotion-rule\\views\\promotion-rule-view.js"

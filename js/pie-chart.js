@@ -4,9 +4,15 @@ var BackChart = BackChart || {};
 
 	BackChart.PieChart = BackChart.BaseChart.extend({
 
+        defaults: {
+            svgClassName: 'pie-chart'
+        },
+
 		initialize: function (options) {
 			BackChart.BaseChart.prototype.initialize.apply(this, arguments);
 			
+            this.svgClassName = options.svgClassName || this.defaults.svgClassName;
+
 			this.labels = options.labels;
 
 			// this.format = d3.format('.4r');
@@ -14,7 +20,8 @@ var BackChart = BackChart || {};
 			
 			this.offset = options.offset;
 
-			this.textOffset = options.textOffset;
+            this.labelOffset = options.labelOffset;
+			this.valueOffset = options.valueOffset;
 
 			if (this.innerWidth < this.innerHeight) {
 				this.radius = this.innerWidth / 2 - this.offset;
@@ -109,10 +116,17 @@ var BackChart = BackChart || {};
 				startRadX = 0;
 				startRadY = 0;
 			return {
+                class: 'chart-label',
 				x: function (data, index) {
 					var endRad = startRadX + self.scaleRad(data);
 					
-					xText = Math.cos(startRadX + self.scaleRad(data) / 2) * (self.radius * self.textOffset);
+					xText = Math.cos(startRadX + self.scaleRad(data) / 2) * (self.radius * self.labelOffset);
+
+                    if(Math.cos(startRadX + self.scaleRad(data) / 2) > 0) {
+                        d3.select(this).style('text-anchor', 'start');
+                    } else {
+                        d3.select(this).style('text-anchor', 'end');
+                    }
 
 					startRadX = endRad;
 					return xText;
@@ -120,13 +134,65 @@ var BackChart = BackChart || {};
 				y: function (data, index) {
 					var endRad = startRadY + self.scaleRad(data);
 
-					yText = Math.sin(startRadY + self.scaleRad(data) / 2) * (self.radius * self.textOffset);
+					yText = Math.sin(startRadY + self.scaleRad(data) / 2) * (self.radius * self.labelOffset);
+
+                    if(Math.sin(startRadY + self.scaleRad(data) / 2) > 0) {
+                        d3.select(this).style('alignment-baseline', 'text-before-edge');
+                    } else {
+                        d3.select(this).style('alignment-baseline', 'text-after-edge');
+                    }
 
 					startRadY = endRad;
 					return yText;
 				}
 			};
 		},
+
+        getValueText: function () {
+            var self = this;
+            return function (data) {
+                return data;
+            };
+        },
+
+        getValueAttr: function () {
+            var self = this;
+                startRadX = 0;
+                startRadY = 0;
+            return {
+                class: 'chart-value',
+                x: function (data, index) {
+                    var endRad = startRadX + self.scaleRad(data);
+                    
+                    xText = Math.cos(startRadX + self.scaleRad(data) / 2) * (self.radius * self.valueOffset);
+
+                    // d3.select(this).style('text-anchor', 'middle');
+
+                    if(Math.cos(startRadX + self.scaleRad(data) / 2) > 0) {
+                        d3.select(this).style('text-anchor', 'start');
+                    } else {
+                        d3.select(this).style('text-anchor', 'end');
+                    }
+
+                    startRadX = endRad;
+                    return xText;
+                },
+                y: function (data, index) {
+                    var endRad = startRadY + self.scaleRad(data);
+
+                    yText = Math.sin(startRadY + self.scaleRad(data) / 2) * (self.radius * self.valueOffset);
+
+                    if(Math.sin(startRadY + self.scaleRad(data) / 2) > 0) {
+                        d3.select(this).style('alignment-baseline', 'text-before-edge');
+                    } else {
+                        d3.select(this).style('alignment-baseline', 'text-after-edge');
+                    }
+
+                    startRadY = endRad;
+                    return yText;
+                }
+            };
+        },
 
 		appendAfterChart: function () {
 			// this.svg.append('g')
@@ -218,6 +284,61 @@ var BackChart = BackChart || {};
 			this.chartTextGroup.append('text')
 				.text(this.getLabelText())
 				.attr(this.getLabelAttr());
+
+            this.chartTextGroup.append('text')
+                .text(this.getValueText())
+                .attr(this.getValueAttr());
+
+            // var startRadX = 0,
+            //     startRadY = 0;
+
+            // this.chartTextGroup.append('circle')
+            //     .attr({
+            //             cx: function (data, index) {
+            //                 var endRad = startRadX + self.scaleRad(data);
+                            
+            //                 xText = Math.cos(startRadX + self.scaleRad(data) / 2) * (self.radius * self.valueOffset);
+
+            //                 startRadX = endRad;
+            //                 return xText;
+            //             },
+            //             cy: function (data, index) {
+            //                 var endRad = startRadY + self.scaleRad(data);
+
+            //                 yText = Math.sin(startRadY + self.scaleRad(data) / 2) * (self.radius * self.valueOffset);
+
+            //                 startRadY = endRad;
+            //                 return yText;
+            //             },
+            //             r: 2
+            //         })
+            //     .style({
+            //         fill: 'red'
+            //     });
+
+            // this.chartTextGroup.append('circle')
+            //     .attr({
+            //             cx: function (data, index) {
+            //                 var endRad = startRadX + self.scaleRad(data);
+                            
+            //                 xText = Math.cos(startRadX + self.scaleRad(data) / 2) * (self.radius * self.labelOffset);
+
+            //                 startRadX = endRad;
+            //                 return xText;
+            //             },
+            //             cy: function (data, index) {
+            //                 var endRad = startRadY + self.scaleRad(data);
+
+            //                 yText = Math.sin(startRadY + self.scaleRad(data) / 2) * (self.radius * self.labelOffset);
+
+            //                 startRadY = endRad;
+            //                 return yText;
+            //             },
+            //             r: 2
+            //         })
+            //     .style({
+            //         fill: 'red'
+            //     });
 		}
 	});
 

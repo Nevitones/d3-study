@@ -18,7 +18,8 @@ var BackChart = BackChart || {};
 
 			this.labels = options.labels;
 
-			this.labelPlacement = options.labelPlacement;
+            this.labelPlacement = options.labelPlacement;
+			this.valuePlacement = options.valuePlacement;
 
 			this.gutter = options.gutter;
 
@@ -86,31 +87,64 @@ var BackChart = BackChart || {};
 		getLabelText: function () {
 			var self = this;
 			return function (data, index) {
-				return self.dataAslabel ? data : self.labels[index];
+                return  self.labels[index];
 			};
 		},
 
 		getLabelAttr: function () {
 			var self = this;
 			return {
+                class: 'chart-label',
 				'alignment-baseline': function(data) {
 					switch(self.labelPlacement) {
-						case BackChart.placement.top:
-							return data >= 0 ? 'text-after-edge' : 'text-before-edge';
-						case BackChart.placement.bottom:
-							return data >= 0 ? 'text-before-edge' : 'text-after-edge';
+                        case BackChart.placement.INSIDE:
+                            return data >= 0 ? 'text-after-edge' : 'text-before-edge';
+                        case BackChart.placement.OUTSIDE:
+                            return data >= 0 ? 'text-before-edge' : 'text-after-edge';
 					}
 				},
-				'x': this.barWidth*0.5,
-				'y': function (data) {
-					if (data >= 0) {
-						return 0;
-					} else {
-						return self.scaleY(0) - self.scaleY(data);
-					}
-				}
+				x: this.barWidth*0.5,
+                y: function (data) {
+                    if (data >= 0) {
+                        return self.scaleY(data);
+                    } else {
+                        return self.scaleY(0) + self.scaleY(data);
+                    }
+                },
+                dy: '0.25em'
 			};
 		},
+
+        getValueText: function () {
+            var self = this;
+            return function (data) {
+                return data;
+            };
+        },
+
+        getValueAttr: function () {
+            var self = this;
+            return {
+                class: 'chart-value',
+                'alignment-baseline': function(data) {
+                    switch(self.valuePlacement) {
+                        case BackChart.placement.OUTSIDE:
+                            return data >= 0 ? 'text-after-edge' : 'text-before-edge';
+                        case BackChart.placement.INSIDE:
+                            return data >= 0 ? 'text-before-edge' : 'text-after-edge';
+                    }
+                },
+                x: this.barWidth*0.5,
+                y: function (data) {
+                    if (data >= 0) {
+                        return 0;
+                    } else {
+                        return self.scaleY(0) - self.scaleY(data);
+                    }
+                },
+                dy: '-0.25em'
+            };
+        },
 
 		createChart: function() {
 			this.chartGroup.append('rect')
@@ -119,6 +153,10 @@ var BackChart = BackChart || {};
 			this.chartGroup.append('text')
 				.text(this.getLabelText())
 				.attr(this.getLabelAttr());
+
+            this.chartGroup.append('text')
+                .text(this.getValueText())
+                .attr(this.getValueAttr());
 		},
 		appendBeforeChart: function() {
 			var self = this;

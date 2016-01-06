@@ -137,20 +137,23 @@ $.getJSON('json/kpi.json', function (kpi) {
 			FREIGHT_FIXED_VALUE: 'Valor Fixo'
 		},
 		pieChartDefaults = {
-			className: 'chart chart-green',
+            className: 'chart chart-green',
+			svgClassName: 'pie-chart',
 			width : 250,
 			height :250,
-			offset: 2,
-			textOffset: 1.25,
+			offset: 4,
+            labelOffset: 1,
+			valueOffset: 0.5,
 			margin: {
-				top: 40,
-				right: 40,
+				top: 50,
+				right: 50,
 				bottom: 40,
-				left: 40
+				left: 50
 			}
 		},
 		barChartDefaults = {
 			className: 'chart chart-green',
+            dataAslabel: false,
 			width : 250,
 			height :250,
 			margin: {
@@ -159,7 +162,8 @@ $.getJSON('json/kpi.json', function (kpi) {
 				bottom: 20,
 				left: 20
 			},
-			labelPlacement: BackChart.placement.top,
+            labelPlacement: BackChart.placement.OUTSIDE,
+			valuePlacement: BackChart.placement.OUTSIDE,
 			gutter : 10
 		};
 
@@ -199,7 +203,6 @@ $.getJSON('json/kpi.json', function (kpi) {
 
 	/* BAR CHARTS */
 	barChartDefaults.title = 'Totais';
-	barChartDefaults.dataAslabel = false;
 	barChartDefaults.data = totals.values;
 	barChartDefaults.labels = totals.labels;
 	barChartDefaults.width = 600;
@@ -207,14 +210,15 @@ $.getJSON('json/kpi.json', function (kpi) {
 	var totalsBarsChart = new BackChart.BarsChart(barChartDefaults);
 
 	barChartDefaults.title = 'Parcelamentos por mês';
-	barChartDefaults.dataAslabel = true;
-	barChartDefaults.data = totalInstallmentsByMonth.values;
-	barChartDefaults.width = 250;
-	barChartDefaults.gutter = 10;
+    barChartDefaults.data = totalInstallmentsByMonth.values;
+	barChartDefaults.labels = totalInstallmentsByMonth.labels;
+	barChartDefaults.width = 345;
+	barChartDefaults.gutter = 20;
 	var totalInstallmentsByMonthBarsChart = new BackChart.BarsChart(barChartDefaults);
 
 	barChartDefaults.title = 'Promoções por mês';
-	barChartDefaults.data = totalDealsByMonth.values;
+    barChartDefaults.data = totalDealsByMonth.values;
+	barChartDefaults.labels = totalDealsByMonth.labels;
 	var totalDealsByMonthBarsChart = new BackChart.BarsChart(barChartDefaults);
 
 	barChartDefaults.title = 'Promoções por tipo';
@@ -222,7 +226,8 @@ $.getJSON('json/kpi.json', function (kpi) {
 	var totalDealsByTypeBarsChart = new BackChart.BarsChart(barChartDefaults);
 
 	barChartDefaults.title = 'Campanhas por mês';
-	barChartDefaults.data = totalFreightCampaignsByMonth.values;
+    barChartDefaults.data = totalFreightCampaignsByMonth.values;
+	barChartDefaults.labels = totalFreightCampaignsByMonth.labels;
 	var totalFreightCampaignsByMonthBarsChart = new BackChart.BarsChart(barChartDefaults);
 
 
@@ -258,27 +263,27 @@ $.getJSON('json/kpi.json', function (kpi) {
 
 
 	var $charts = $('.charts'),
-		wrapChart = function (chart, cols) {
+		createChartCard = function (chart, className) {
 			return $('<div/>')
-				.addClass('col-xs-' + cols)
-				.append(chart);
+				.addClass(className)
+                .append(chart.el);
 		};
 
 	$charts
-		.append(wrapChart(totalsBarsChart.render().el, 12))
+		.append(createChartCard(totalsBarsChart.render(), 'col-xs-12'))
 
-		.append(wrapChart(totalInstallmentsByMonthBarsChart.render().el, 6))
-		.append(wrapChart(totalInstallmentsByMonthPieChart.render().el, 6))
+		.append(createChartCard(totalInstallmentsByMonthBarsChart.render(), 'col-xs-12 col-sm-6 col-lg-4'))
+		.append(createChartCard(totalInstallmentsByMonthPieChart.render(), 'col-xs-12 col-sm-6 col-lg-4'))
 
-		.append(wrapChart(totalDealsByMonthBarsChart.render().el, 6))
-		.append(wrapChart(totalDealsByMonthPieChart.render().el, 6))
+		.append(createChartCard(totalDealsByMonthBarsChart.render(), 'col-xs-12 col-sm-6 col-lg-4'))
+		.append(createChartCard(totalDealsByMonthPieChart.render(), 'col-xs-12 col-sm-6 col-lg-4'))
 
-		.append(wrapChart(totalDealsByTypeBarsChart.render().el, 6))
-		.append(wrapChart(totalDealsByTypePieChart.render().el, 6))
+		.append(createChartCard(totalDealsByTypeBarsChart.render(), 'col-xs-12 col-sm-6 col-lg-4'))
+		.append(createChartCard(totalDealsByTypePieChart.render(), 'col-xs-12 col-sm-6 col-lg-4'))
 
-		.append(wrapChart(totalFreightCampaignsByMonthBarsChart.render().el, 6))
-		.append(wrapChart(totalFreightCampaignsByMonthPieChart.render().el, 6))
+		.append(createChartCard(totalFreightCampaignsByMonthBarsChart.render(), 'col-xs-12 col-sm-6 col-lg-4'))
+		.append(createChartCard(totalFreightCampaignsByMonthPieChart.render(), 'col-xs-12 col-sm-6 col-lg-4'))
 
-		.append(wrapChart(totalFreightCampaignsByTypeBarsChart.render().el, 6))	
-		.append(wrapChart(totalFreightCampaignsByTypePieChart.render().el, 6));	
+		.append(createChartCard(totalFreightCampaignsByTypeBarsChart.render(), 'col-xs-12 col-sm-6 col-lg-4'))	
+		.append(createChartCard(totalFreightCampaignsByTypePieChart.render(), 'col-xs-12 col-sm-6 col-lg-4'));	
 });

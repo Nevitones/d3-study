@@ -4,15 +4,23 @@ var BackChart = BackChart || {};
 
 
 	BackChart.placement = {
-		top:1,
-		right:2,
-		bottom:3,
-		left:4
+		TOP:1,
+		RIGHT:2,
+		BOTTOM:3,
+		LEFT:4,
+        INSIDE: 5,
+        OUTSIDE: 6
 	};
 
 	BackChart.BaseChart = Backbone.View.extend({
 
+        defaults: {
+            svgClassName: ''
+        },
+
 		initialize: function (options) {
+            this.svgClassName = options.svgClassName || this.defaults.svgClassName;
+
 			this.title = options.title;
 			
 			this.data = options.data;
@@ -28,14 +36,17 @@ var BackChart = BackChart || {};
 
 		createTitle: function () {
 			if (this.title) {
-				d3.select(this.el).append('h4')
-					.text(this.title);
+				d3.select(this.el)
+                    .append('div')
+                        .classed('card-title clearfix', true)
+                        .append('h3')
+        					.text(this.title);
 			}
 		},
 
 		createSVGElement: function() {
 			this.svg = d3.select(this.el).append('svg')
-				.classed('chart-container', true)
+				.classed(this.svgClassName, true)
 				.style({
 					// width        : (this.width + this.margin.left + this.margin.right) + 'px',
 					// height       : (this.height + this.margin.top + this.margin.bottom) + 'px',
@@ -62,6 +73,12 @@ var BackChart = BackChart || {};
 		getLabelAttr: function () {
 			throw 'Not implemented';
 		},
+        getValueText: function () {
+            throw 'Not implemented';
+        },
+        getValueAttr: function () {
+            throw 'Not implemented';
+        },
 		createChartGroup: function() {
 			this.chartGroup = this.svg.selectAll('g')
 				.data(this.data)
@@ -74,17 +91,17 @@ var BackChart = BackChart || {};
 		},
 		render: function () {
 
+            this.createSVGElement();
+
+            this.appendBeforeChart();
+
+            this.createChartGroup();
+
+            this.createChart();
+
+            this.appendAfterChart();
+
 			this.createTitle();
-
-			this.createSVGElement();
-
-			this.appendBeforeChart();
-
-			this.createChartGroup();
-
-			this.createChart();
-
-			this.appendAfterChart();
 
 			return this;
 		}
