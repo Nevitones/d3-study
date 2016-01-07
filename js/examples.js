@@ -142,7 +142,7 @@ $.getJSON('json/kpi.json', function (kpi) {
 			width : 250,
 			height :250,
 			offset: 4,
-            labelOffset: 1,
+            labelOffset: 1.04,
 			valueOffset: 0.5,
 			margin: {
 				top: 50,

@@ -2,7 +2,13 @@
 	box-sizing: border-box;
 	font-family: 'Roboto', sans-serif;
 }
+h2 {
+	color: #7bb33a;
+}
 
+.charts {
+	/*margin-bottom: 30px;*/
+}
 .chart {
 	text-align: center;
 	color: #FFF;

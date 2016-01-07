@@ -40,10 +40,27 @@ var BackChart = BackChart || {};
 					.range([this.hueRange.start, this.hueRange.end]);
 			}
 
-
 			this.scaleRad = d3.scale.linear()
 				.domain([0, d3.sum(this.data)])
 				.range([0, 2*Math.PI]);
+
+			this.pieces = this.calculatePieceSizes();
+
+			this.alignmentAreas = [Math.PI/8, 3*Math.PI/8, 5*Math.PI/8, 7*Math.PI/8, 9*Math.PI/8, 11*Math.PI/8, 13*Math.PI/8, 15*Math.PI/8];
+
+		},
+
+		calculatePieceSizes: function () {
+			var self = this,
+				currentRad = 0,
+				pieces = [];
+
+			_.each(this.data, function(data, index) {
+				pieces.push(currentRad);
+				currentRad += self.scaleRad(data);
+			});
+
+			return pieces;
 		},
 
 		getChartStyle: function () {
@@ -106,44 +123,72 @@ var BackChart = BackChart || {};
 		getLabelText: function () {
 			var self = this;
 			return function (data, index) {
-				// return self.format(data);
 				return self.labels[index];
 			};
 		},
 
+		getXArc: function (data, index, offset, svgElement) {
+			var radians = this.pieces[index] + this.scaleRad(data) / 2,
+				xArc = Math.cos(radians);
+			
+			xText = xArc * (this.radius * offset);
+
+
+            if (radians >= this.alignmentAreas[6] || radians <= this.alignmentAreas[1]) {
+                d3.select(svgElement).style('text-anchor', 'start');
+            } else if (radians <= this.alignmentAreas[2]) {
+                d3.select(svgElement).style('text-anchor', 'middle');
+            } else if (radians <= this.alignmentAreas[5]) {
+            	d3.select(svgElement).style('text-anchor', 'end');
+            } else if (radians <= this.alignmentAreas[7]) {
+                d3.select(svgElement).style('text-anchor', 'middle');
+            }
+
+
+            // if(radians < Math.PI/2 || radians > 3*Math.PI/2) {
+            //     d3.select(svgElement).style('text-anchor', 'start');
+            // } else {
+            //     d3.select(svgElement).style('text-anchor', 'end');
+            // }
+
+			return xText;
+		},
+
+		getYArc: function (data, index, offset, svgElement) {
+			var radians = this.pieces[index] + this.scaleRad(data) / 2,
+				yArc = Math.sin(radians);
+
+			yText = yArc * (this.radius * offset);
+
+            if (radians >= this.alignmentAreas[7] || radians <= this.alignmentAreas[0]) {
+                d3.select(svgElement).style('alignment-baseline', 'middle');
+            } else if (radians <= this.alignmentAreas[3]) {
+                d3.select(svgElement).style('alignment-baseline', 'text-before-edge');
+            } else if (radians <= this.alignmentAreas[4]) {
+            	d3.select(svgElement).style('alignment-baseline', 'middle');
+            } else if (radians <= this.alignmentAreas[7]) {
+                d3.select(svgElement).style('alignment-baseline', 'text-after-edge');
+            }
+
+            // if(radians < Math.PI) {
+            //     d3.select(svgElement).style('alignment-baseline', 'text-before-edge');
+            // } else {
+            //     d3.select(svgElement).style('alignment-baseline', 'text-after-edge');
+            // }
+
+			return yText;
+		},
+
 		getLabelAttr: function () {
 			var self = this;
-				startRadX = 0;
-				startRadY = 0;
+
 			return {
                 class: 'chart-label',
 				x: function (data, index) {
-					var endRad = startRadX + self.scaleRad(data);
-					
-					xText = Math.cos(startRadX + self.scaleRad(data) / 2) * (self.radius * self.labelOffset);
-
-                    if(Math.cos(startRadX + self.scaleRad(data) / 2) > 0) {
-                        d3.select(this).style('text-anchor', 'start');
-                    } else {
-                        d3.select(this).style('text-anchor', 'end');
-                    }
-
-					startRadX = endRad;
-					return xText;
+					return self.getXArc(data, index, self.labelOffset, this);
 				},
 				y: function (data, index) {
-					var endRad = startRadY + self.scaleRad(data);
-
-					yText = Math.sin(startRadY + self.scaleRad(data) / 2) * (self.radius * self.labelOffset);
-
-                    if(Math.sin(startRadY + self.scaleRad(data) / 2) > 0) {
-                        d3.select(this).style('alignment-baseline', 'text-before-edge');
-                    } else {
-                        d3.select(this).style('alignment-baseline', 'text-after-edge');
-                    }
-
-					startRadY = endRad;
-					return yText;
+					return self.getYArc(data, index, self.labelOffset, this);
 				}
 			};
 		},
@@ -157,40 +202,15 @@ var BackChart = BackChart || {};
 
         getValueAttr: function () {
             var self = this;
-                startRadX = 0;
-                startRadY = 0;
+
             return {
                 class: 'chart-value',
-                x: function (data, index) {
-                    var endRad = startRadX + self.scaleRad(data);
-                    
-                    xText = Math.cos(startRadX + self.scaleRad(data) / 2) * (self.radius * self.valueOffset);
-
-                    // d3.select(this).style('text-anchor', 'middle');
-
-                    if(Math.cos(startRadX + self.scaleRad(data) / 2) > 0) {
-                        d3.select(this).style('text-anchor', 'start');
-                    } else {
-                        d3.select(this).style('text-anchor', 'end');
-                    }
-
-                    startRadX = endRad;
-                    return xText;
-                },
-                y: function (data, index) {
-                    var endRad = startRadY + self.scaleRad(data);
-
-                    yText = Math.sin(startRadY + self.scaleRad(data) / 2) * (self.radius * self.valueOffset);
-
-                    if(Math.sin(startRadY + self.scaleRad(data) / 2) > 0) {
-                        d3.select(this).style('alignment-baseline', 'text-before-edge');
-                    } else {
-                        d3.select(this).style('alignment-baseline', 'text-after-edge');
-                    }
-
-                    startRadY = endRad;
-                    return yText;
-                }
+				x: function (data, index) {
+					return self.getXArc(data, index, self.valueOffset, this);
+				},
+				y: function (data, index) {
+					return self.getYArc(data, index, self.valueOffset, this);
+				}
             };
         },
 
@@ -289,6 +309,8 @@ var BackChart = BackChart || {};
                 .text(this.getValueText())
                 .attr(this.getValueAttr());
 
+
+            /* HELPERS */
             // var startRadX = 0,
             //     startRadY = 0;
 
