@@ -1,107 +1,3 @@
-var dataNagativeValues = [],
-	data = [],
-	data2 = [],
-	data3 = [],
-	barsChartNagativeValues,
-	barsChart1,
-	barsChart2,
-	barsChart3,
-	i;
-
-
-// for (i = 0; i <= 20; i = i + 2) {
-// 	// dataNagativeValues.push(Math.random() * 100 - 50);
-// 	dataNagativeValues.push(i - 15);
-// }
-
-// barsChartNagativeValues = new BackChart.BarsChart({
-// 	className: 'chart-green',
-// 	data : dataNagativeValues,
-// 	width : 600,
-// 	height :200,
-// 	margin: {
-// 		top: 20,
-// 		right: 0,
-// 		bottom: 20,
-// 		left: 0
-// 	},
-// 	labelPlacement: BackChart.placement.top,
-// 	gutter : 20
-// });
-
-// for (i = 0; i < (2*Math.PI); i = i + (Math.PI / 12)) {
-// 	data.push(Math.sin(i) * 50);
-// }
-
-// barsChart1 = new BackChart.BarsChart({
-// 	data : data,
-// 	width : 600,
-// 	height :200,
-// 	margin: {
-// 		top: 50,
-// 		right: 0,
-// 		bottom: 50,
-// 		left: 0
-// 	},
-// 	labelPlacement: BackChart.placement.top,
-// 	gutter : 4,
-// 	hueRange : {
-// 		start: '#ff0000',
-// 		end: '#00ff00'
-// 	}
-// });
-
-// for (i = 0; i <= Math.PI; i = i + (Math.PI / 31)) {
-// 	data2.push(Math.sin(i) * 25);
-// }
-// barsChart2 = new BackChart.BarsChart({
-// 	data : data2,
-// 	// data : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-// 	width : 600,
-// 	height :200,
-// 	margin: {
-// 		top: 20,
-// 		right: 0,
-// 		bottom: 20,
-// 		left: 0
-// 	},
-// 	labelPlacement: BackChart.placement.top,
-// 	gutter : 1,
-// 	hueRange : {
-// 		start: '#ff00ff',
-// 		end: '#ffff00'
-// 	}
-// });
-
-
-// for (i = 0; i <= 100; i = i + 1) {
-// 	data3.push(i);
-// }
-
-// barsChart3 = new BackChart.BarsChart({
-// 	data : data3,
-// 	width : 600,
-// 	height :200,
-// 	margin: {
-// 		top: 20,
-// 		right: 0,
-// 		bottom: 0,
-// 		left: 0
-// 	},
-// 	labelPlacement: BackChart.placement.top,
-// 	gutter : 2
-// });
-
-// $('body').append(barsChartNagativeValues.render().el);
-// $('body').append(barsChart1.render().el);
-// $('body').append(barsChart2.render().el);
-// $('body').append(barsChart3.render().el);
-var d = [];
-for (i = 0; i <= 2; i = i + 1) {
-	d.push(Math.random()*100);
-}
-
-
 var parseKpiData = function (kpi, dataType) {
 	var kpiData = _.find(kpi, {name: dataType}),
 		parsedData = {
@@ -120,9 +16,12 @@ var parseKpiData = function (kpi, dataType) {
 $.getJSON('json/kpi.json', function (kpi) {
 	var totals,
 		totalInstallmentsByMonth,
+		totalInstallmentsByType,
 		totalDealsByMonth,
 		totalDealsByType,
 		totalFreightCampaignsByMonth,
+		totalClusters,
+		totalDealsWithCoupons,
 		months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
 		dealTypes = {
 			DEAL_NOMINAL_ON_CART: 'Nominal',
@@ -139,16 +38,16 @@ $.getJSON('json/kpi.json', function (kpi) {
 		pieChartDefaults = {
             className: 'chart chart-green',
 			svgClassName: 'pie-chart',
-			width : 250,
+			width : 300,
 			height :250,
 			offset: 4,
             labelOffset: 1.04,
 			valueOffset: 0.5,
 			margin: {
 				top: 50,
-				right: 50,
+				right: 75,
 				bottom: 40,
-				left: 50
+				left: 75
 			}
 		},
 		barChartDefaults = {
@@ -173,6 +72,29 @@ $.getJSON('json/kpi.json', function (kpi) {
 				_.find(kpi, {name: 'totalInstallments'}).value,
 				_.find(kpi, {name: 'totalDeals'}).value,
 				_.find(kpi, {name: 'totalFreightCampaigns'}).value
+			]
+		};
+
+		totalDealsWithCoupons = {
+			labels: ['Promoções'],
+			values: [
+				_.find(kpi, {name: 'totalDealsWithCoupons'}).value
+			]			
+		};
+
+		totalInstallmentsByType = {
+			labels: ['Com Juros', 'Sem Juros'],
+			values: [
+				_.find(kpi, {name: 'totalInstallmentsWithInterest'}).value,
+				_.find(kpi, {name: 'totalInstallmentsWithoutInterest'}).value
+			]
+		};
+		
+		totalClusters = {
+			labels: ['Promoções', 'Campanhas'],
+			values: [
+				_.find(kpi, {name: 'totalDealsWithClusters'}).value,
+				_.find(kpi, {name: 'totalFreightCampaignsWithClusters'}).value
 			]
 		};
 
@@ -205,19 +127,42 @@ $.getJSON('json/kpi.json', function (kpi) {
 	barChartDefaults.title = 'Totais';
 	barChartDefaults.data = totals.values;
 	barChartDefaults.labels = totals.labels;
-	barChartDefaults.width = 600;
-	barChartDefaults.gutter = 100;
+	barChartDefaults.width = 345;
+	barChartDefaults.gutter = 20;
+	barChartDefaults.margin = {
+		top: 40,
+		right: 10,
+		bottom: 20,
+		left: 10
+	};
 	var totalsBarsChart = new BackChart.BarsChart(barChartDefaults);
 
+	barChartDefaults.title = 'Coupons';
+	barChartDefaults.data = totalDealsWithCoupons.values;
+	barChartDefaults.labels = totalDealsWithCoupons.labels;
+	barChartDefaults.gutter = 120;
+	var totalDealsWithCouponsBarsChart = new BackChart.BarsChart(barChartDefaults);
+
 	barChartDefaults.title = 'Parcelamentos por mês';
-    barChartDefaults.data = totalInstallmentsByMonth.values;
+	barChartDefaults.data = totalInstallmentsByMonth.values;
 	barChartDefaults.labels = totalInstallmentsByMonth.labels;
 	barChartDefaults.width = 345;
 	barChartDefaults.gutter = 20;
+	barChartDefaults.margin = {
+		top: 40,
+		right: 20,
+		bottom: 20,
+		left: 20
+	};
 	var totalInstallmentsByMonthBarsChart = new BackChart.BarsChart(barChartDefaults);
 
+	barChartDefaults.title = 'Parcelamentos por tipo';
+	barChartDefaults.data = totalInstallmentsByType.values;
+	barChartDefaults.labels = totalInstallmentsByType.labels;
+	var totalInstallmentsByTypeBarsChart = new BackChart.BarsChart(barChartDefaults);
+
 	barChartDefaults.title = 'Promoções por mês';
-    barChartDefaults.data = totalDealsByMonth.values;
+	barChartDefaults.data = totalDealsByMonth.values;
 	barChartDefaults.labels = totalDealsByMonth.labels;
 	var totalDealsByMonthBarsChart = new BackChart.BarsChart(barChartDefaults);
 
@@ -226,20 +171,29 @@ $.getJSON('json/kpi.json', function (kpi) {
 	var totalDealsByTypeBarsChart = new BackChart.BarsChart(barChartDefaults);
 
 	barChartDefaults.title = 'Campanhas por mês';
-    barChartDefaults.data = totalFreightCampaignsByMonth.values;
+	barChartDefaults.data = totalFreightCampaignsByMonth.values;
 	barChartDefaults.labels = totalFreightCampaignsByMonth.labels;
 	var totalFreightCampaignsByMonthBarsChart = new BackChart.BarsChart(barChartDefaults);
-
 
 	barChartDefaults.title = 'Campanhas por tipo';
 	barChartDefaults.data = totalFreightCampaignsByType.values;
 	var totalFreightCampaignsByTypeBarsChart = new BackChart.BarsChart(barChartDefaults);
 
 	/* PIE CHARTS */
+	pieChartDefaults.title = 'Clusters';
+    pieChartDefaults.data = totalClusters.values;
+	pieChartDefaults.labels = totalClusters.labels;
+	var totalClustersPieChart = new BackChart.PieChart(pieChartDefaults);
+
 	pieChartDefaults.title = 'Parcelamentos por mês';
 	pieChartDefaults.data = totalInstallmentsByMonth.values;
 	pieChartDefaults.labels = totalInstallmentsByMonth.labels;
 	var totalInstallmentsByMonthPieChart = new BackChart.PieChart(pieChartDefaults);
+
+	pieChartDefaults.title = 'Parcelamentos por tipo';
+	pieChartDefaults.data = totalInstallmentsByType.values;
+	pieChartDefaults.labels = totalInstallmentsByType.labels;
+	var totalInstallmentsByTypePieChart = new BackChart.PieChart(pieChartDefaults);
 
 	pieChartDefaults.title = 'Promoções por mês';
 	pieChartDefaults.data = totalDealsByMonth.values;
@@ -271,6 +225,12 @@ $.getJSON('json/kpi.json', function (kpi) {
 
 	$charts
 		.append(createChartCard(totalsBarsChart.render(), 'col-xs-12'))
+		
+		.append(createChartCard(totalDealsWithCouponsBarsChart.render(), 'col-md-12 col-lg-6'))
+		.append(createChartCard(totalClustersPieChart.render(), 'col-md-12 col-lg-6'))
+
+		.append(createChartCard(totalInstallmentsByTypeBarsChart.render(), 'col-xs-12 col-sm-6 col-lg-4'))
+		.append(createChartCard(totalInstallmentsByTypePieChart.render(), 'col-xs-12 col-sm-6 col-lg-4'))
 
 		.append(createChartCard(totalInstallmentsByMonthBarsChart.render(), 'col-xs-12 col-sm-6 col-lg-4'))
 		.append(createChartCard(totalInstallmentsByMonthPieChart.render(), 'col-xs-12 col-sm-6 col-lg-4'))
